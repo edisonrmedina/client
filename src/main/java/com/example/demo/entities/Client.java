@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "Clientes")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +18,10 @@ public class Client {
     private String nombre;
     private String correo;
     private String telefono;
+
+    public Client(String nombre, String correo, String telefono) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
 }

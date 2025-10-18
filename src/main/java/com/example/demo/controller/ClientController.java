@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.entities.Client;
+import com.example.demo.repository.ClientRepository;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -10,6 +10,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/clients")
 public class ClientController {
+
+    private ClientRepository clientRepository;
+
+    public ClientController(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
 
     @GetMapping("/all-samples")
     public List<Map<String,Object>> home() {
@@ -19,5 +25,14 @@ public class ClientController {
                 Map.of("id", 3, "name", "Monitor Samsung", "price", 300)
         );
     }
-    
+
+    @PostMapping()
+    public Client  save(@RequestBody Client client){
+        return this.clientRepository.save(client);
+    }
+
+    @GetMapping()
+    public List<Client> all(){
+        return this.clientRepository.findAll();
+    }
 }
