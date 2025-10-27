@@ -11,7 +11,7 @@ import java.util.Map;
 @RequestMapping("/api/clients")
 public class ClientController {
 
-    private ClientRepository clientRepository;
+    final private ClientRepository clientRepository;
 
     public ClientController(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
@@ -27,7 +27,7 @@ public class ClientController {
     }
 
     @PostMapping()
-    public Client  save(@RequestBody Client client){
+    public Client save(@RequestBody Client client){
         return this.clientRepository.save(client);
     }
 

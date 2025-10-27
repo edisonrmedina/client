@@ -15,13 +15,13 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;
-    private String correo;
-    private String telefono;
+    private int creditScore;
+    private String riskLevel;
+    private String externalStatus;
 
-    public Client(String nombre, String correo, String telefono) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
+    public Client(int creditScore, String riskLevel, String externalStatus) {
+        this.creditScore = creditScore;
+        this.riskLevel = riskLevel;
+        this.externalStatus = externalStatus;
     }
 }
